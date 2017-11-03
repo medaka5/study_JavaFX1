@@ -4,8 +4,8 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -38,7 +38,16 @@ public class Main extends Application {
         checkbox.setSelected(true);
         checkbox.setOnAction(e->label.setText(checkbox.isSelected()?"Selected":"NotSelected"));
 
-        pane.getChildren().addAll(label, field,button,checkbox);
+        ToggleGroup  toggleGroup = new ToggleGroup();
+        RadioButton radio1 = new RadioButton();
+        RadioButton radio2 = new RadioButton();
+        radio1.setToggleGroup(toggleGroup);
+        radio2.setToggleGroup(toggleGroup);
+        radio1.setSelected(true);
+
+
+        pane.getChildren().addAll(label, field,button,checkbox, radio1, radio2);
+
 
         button.setOnAction(e->{
                 String msg = "clicked!!";
