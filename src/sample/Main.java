@@ -9,6 +9,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
+
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -28,6 +31,11 @@ public class Main extends Application {
         pane.setTop(label);
         pane.setCenter(field);
         pane.setBottom(button);
+
+        button.setOnAction(e-> {
+                String msg = "clicked!!";
+                label.setText(msg);
+        });
 
         primaryStage.show();
 
