@@ -32,18 +32,16 @@ public class Main extends Application {
         pane.setCenter(field);
         pane.setBottom(button);
 
-        class TempEventHandler implements EventHandler<ActionEvent> {
+
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
             public void handle(ActionEvent event) {
                 String msg = "clicked!!";
                 label.setText(msg);
             }
-        }
-
-        button.setOnAction(new TempEventHandler());
+        });
 
         primaryStage.show();
-
-
     }
 
 
