@@ -2,6 +2,7 @@ package sample;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -18,6 +19,13 @@ public class Main extends Application {
         BorderPane pane = new BorderPane();
         Scene scene = new Scene(pane, 320, 240);
         primaryStage.setScene(scene);
+
+
+        // 文字列表示
+        Label label = new Label("Hello");
+        pane.setCenter(label);
+
+
         primaryStage.show();
     }
 
