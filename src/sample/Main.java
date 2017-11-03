@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,8 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-import java.beans.EventHandler;
 
 public class Main extends Application {
     public static void main(String[] args) {
@@ -32,10 +32,14 @@ public class Main extends Application {
         pane.setCenter(field);
         pane.setBottom(button);
 
-        button.setOnAction(e-> {
+        class TempEventHandler implements EventHandler<ActionEvent> {
+            public void handle(ActionEvent event) {
                 String msg = "clicked!!";
                 label.setText(msg);
-        });
+            }
+        }
+
+        button.setOnAction(new TempEventHandler());
 
         primaryStage.show();
 
