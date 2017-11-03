@@ -53,9 +53,11 @@ public class Main extends Application {
         combo.setItems(data);
         combo.setOnAction(e->label.setText(combo.getValue()));
 
+        Slider slider = new Slider();
 
 
-        pane.getChildren().addAll(label, field,button,checkbox, radio1, radio2, combo);
+
+        pane.getChildren().addAll(label, field,button,checkbox, radio1, radio2, combo, slider);
 
 
         button.setOnAction(e->{
