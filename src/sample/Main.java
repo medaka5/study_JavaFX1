@@ -1,6 +1,8 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,6 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.util.Observable;
 
 
 public class Main extends Application {
@@ -45,8 +48,14 @@ public class Main extends Application {
         radio2.setToggleGroup(toggleGroup);
         radio1.setSelected(true);
 
+        ComboBox<String> combo = new ComboBox<String>();
+        ObservableList<String > data = FXCollections.observableArrayList("one", "two", "three");
+        combo.setItems(data);
+        combo.setOnAction(e->label.setText(combo.getValue()));
 
-        pane.getChildren().addAll(label, field,button,checkbox, radio1, radio2);
+
+
+        pane.getChildren().addAll(label, field,button,checkbox, radio1, radio2, combo);
 
 
         button.setOnAction(e->{
