@@ -5,11 +5,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 
 public class Main extends Application {
@@ -20,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        BorderPane pane = new BorderPane();
+        VBox pane = new VBox();
         Scene scene = new Scene(pane, 320, 240);
         primaryStage.setScene(scene);
 
@@ -28,17 +33,16 @@ public class Main extends Application {
         Label label = new Label("Hello");
         TextField field = new TextField();
         Button button = new Button("Click Me!");
-        pane.setTop(label);
-        pane.setCenter(field);
-        pane.setBottom(button);
+        CheckBox checkbox = new CheckBox("CheckMe!");
 
+        checkbox.setSelected(true);
+        checkbox.setOnAction(e->label.setText(checkbox.isSelected()?"Selected":"NotSelected"));
 
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        pane.getChildren().addAll(label, field,button,checkbox);
+
+        button.setOnAction(e->{
                 String msg = "clicked!!";
                 label.setText(msg);
-            }
         });
 
         primaryStage.show();
